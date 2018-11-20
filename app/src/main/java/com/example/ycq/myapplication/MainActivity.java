@@ -1,6 +1,7 @@
 package com.example.ycq.myapplication;
 
-import android.app.Activity;
+
+import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
@@ -8,24 +9,26 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
 import java.lang.ref.WeakReference;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     TextView textView;
-    Button button;
+    Button button,button2;
     MyHandler myHandler = new MyHandler(this);
-    static int i;
-
+    int i;
+    Intent intent=new Intent();
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.button:
                 textView.setText("1");
                 break;
-            case  R.id.buju:
-               textView.setText("yinchang");
-               break;
+            case R.id.buju:
+                textView.setText("yinchang");
+                break;
+            case R.id.button2:
+                startActivity(intent);
+                break;
         }
 
     }
@@ -35,11 +38,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         textView = (TextView) findViewById(R.id.d);
-        button =(Button) findViewById(R.id.button);
+        button = (Button) findViewById(R.id.button);
+        button2=(Button)findViewById(R.id.button2);
         button.setOnClickListener(this);
+        button2.setOnClickListener(this);
         findViewById(R.id.buju).setOnClickListener(this);
 
-        new Thread(){
+        intent.setClass(MainActivity.this,Main2Activity.class);
+
+        new Thread() {
             @Override
             public void run() {
                 super.run();
