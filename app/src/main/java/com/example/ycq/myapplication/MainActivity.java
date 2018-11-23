@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         button2.setOnClickListener(this);
         findViewById(R.id.buju).setOnClickListener(this);
 
-        intent.setClass(MainActivity.this,Main3Activity.class);
+
 
         new Thread() {
             @Override
